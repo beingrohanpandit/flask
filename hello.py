@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     name = "Rohan Sharma"
-    Fruits = ['Apple', "Banana", "Kiwi", "Orange"]
+    Fruits = ['Apple', "Banana", "Kiwi", "Orange", "Pineapple"]
     return render_template('index.html',name=name,Fruits=Fruits)
 
 
