@@ -12,6 +12,10 @@ def index():
     Fruits = ['Apple', "Banana", "Kiwi", "Orange", "Pineapple"]
     return render_template('index.html',name=name,Fruits=Fruits)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 # Create a Custom Error Pages
 
