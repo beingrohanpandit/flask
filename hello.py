@@ -122,17 +122,43 @@ def update_user(id):
         name_to_update.email = request.form['email']
         name_to_update.favorite_color = request.form['favorite_color']
         try:
+            print("Hello")
             db.session.commit()
             flash("Updated Successfull")
             return render_template("update_user.html",
             form = form,
-            name_to_update = name_to_update)
+            name_to_update = name_to_update,
+            id=id)
         except:
             flash("Please Try Again....")
             return render_template("update_user.html",
             form = form,
-            name_to_update = name_to_update)
+            name_to_update = name_to_update,
+            id=id)
     else:
         return render_template("update_user.html",
             form = form,
-            name_to_update = name_to_update)
+            name_to_update = name_to_update,
+            id=id)
+
+# Create a Update Form
+@app.route('/user/delete/<int:id>')
+def delete_user(id):
+    user_to_delete = Users.query.get_or_404(id)
+    name = None
+    form = UserForm()
+    try:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        flash("Deleted Successfully")
+        user = Users.query.order_by(Users.date_added)
+        return render_template('add_user.html', 
+            form=form,
+            name=name,
+            user=user)
+    except:
+        flash("Not Deleted ! Please Try Again..")
+        return render_template('add_user.html',
+            form=form,
+            name=name,
+            user=user)
