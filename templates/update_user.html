@@ -10,9 +10,9 @@
     {% endfor%}
 
     {% if name %}
-    <h1>{{name}} Added in List  </h1>
+    <h1>{{name}} Updated in List  </h1>
     {% else %}
-    <h1>List of Users</h1>
+    <h1>Updated Users of List</h1>
     <br>
     <form action="" method="post">
         {{form.hidden_tag()}}
@@ -22,39 +22,20 @@
         )}}
 
         {{form.name(
-        class="form-control"
+        class="form-control",
+        value=name_to_update.name 
         )}}
         {{form.email.label(
         class="form-label"
         )}}
         {{form.email(
-        class="form-control"
+        class="form-control",
+        value=name_to_update.email
         )}}
         {{form.submit(
         class="btn btn-outline-secondary my-4"
         )}}
     </form>
     {% endif %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for x in user%}
-            <tr>
-                <th scope="row">{{x.id}}</th>
-                <td><a href="{{url_for('update_user', id=x.id)}}">{{x.name}}</a></td>
-                <td>{{x.email}}</td>
-                <td>{{x.date_added}}</td>
-            </tr>
-
-            {% endfor%}
-        </tbody>
-    </table>
 </div>
 {% endblock %}
