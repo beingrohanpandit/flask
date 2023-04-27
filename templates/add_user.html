@@ -10,7 +10,7 @@
     {% endfor%}
 
     {% if name %}
-    <h1>{{name}} Added in List  </h1>
+    <h1>{{name}} Added in List </h1>
     {% else %}
     <h1>List of Users</h1>
     <br>
@@ -30,6 +30,12 @@
         {{form.email(
         class="form-control"
         )}}
+        {{form.favorite_color.label(
+        class="form-label"
+        )}}
+        {{form.favorite_color(
+        class="form-control",
+        )}}
         {{form.submit(
         class="btn btn-outline-secondary my-4"
         )}}
@@ -41,6 +47,7 @@
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Color</th>
                 <th scope="col">Date</th>
             </tr>
         </thead>
@@ -50,6 +57,7 @@
                 <th scope="row">{{x.id}}</th>
                 <td><a href="{{url_for('update_user', id=x.id)}}">{{x.name}}</a></td>
                 <td>{{x.email}}</td>
+                <td>{{x.favorite_color}}</td>
                 <td>{{x.date_added}}</td>
             </tr>
 

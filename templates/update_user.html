@@ -10,7 +10,7 @@
     {% endfor%}
 
     {% if name %}
-    <h1>{{name}} Updated in List  </h1>
+    <h1>{{name}} Updated in List </h1>
     {% else %}
     <h1>Updated Users of List</h1>
     <br>
@@ -23,7 +23,7 @@
 
         {{form.name(
         class="form-control",
-        value=name_to_update.name 
+        value=name_to_update.name
         )}}
         {{form.email.label(
         class="form-label"
@@ -31,6 +31,13 @@
         {{form.email(
         class="form-control",
         value=name_to_update.email
+        )}}
+        {{form.favorite_color.label(
+        class="form-label"
+        )}}
+        {{form.favorite_color(
+        class="form-control",
+        value=name_to_update.favorite_color
         )}}
         {{form.submit(
         class="btn btn-outline-secondary my-4"
